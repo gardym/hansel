@@ -1,0 +1,11 @@
+%div.header
+	%h1 Hansel
+	%img{:src => "hansel.jpg"}
+
+%ul.gists
+	- @gists.each do |gist|
+		%li.gist
+			%input.done{:type => "checkbox", :value => gist.id}
+			%h3= gist.title
+			%a{:href => gist.link, :target => "_blank"}= gist.text
+
