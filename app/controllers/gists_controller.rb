@@ -5,7 +5,6 @@ get '/gists' do
 end
 
 put '/gist/:id' do
-	puts params
 	gist = Gist.find(params[:id])
 	gist.update_attributes(params[:gist])
 end
