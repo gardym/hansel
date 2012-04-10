@@ -25,9 +25,9 @@ namespace "db" do
 
 	desc "Seed the database"
 	task :seed do
-		6.times { FactoryGirl.create(:gist) }
-		4.times { FactoryGirl.create(:text_gist) }
-		3.times { FactoryGirl.create(:done_gist) }
+		60.times { FactoryGirl.create(:gist) }
+		43.times { FactoryGirl.create(:text_gist) }
+		32.times { FactoryGirl.create(:done_gist) }
 	end
 
 	desc "Remove all test data"
@@ -40,4 +40,6 @@ namespace "db" do
 		require File.join(File.dirname(__FILE__), 'app', 'baseline_data')
 	end
 
+	desc "Drop, reseed and insert baseline data"
+	task :rebuild => ["db:drop", "db:seed", "db:baseline"]
 end
