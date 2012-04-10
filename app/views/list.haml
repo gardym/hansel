@@ -16,7 +16,9 @@
 %ul.gists
 	- @gists.each do |gist|
 		%li{:class => "gist #{gist.done && "gist-done"}" }
-			%input.done{:type => "checkbox", :value => gist.id, :checked => gist.done}
 			%h3= gist.title
 			%a{:href => gist.link, :target => "_blank"}= gist.text
+			%div
+				%input.done{:type => "checkbox", :value => gist.id, :checked => gist.done} 
+				%label Done?
 

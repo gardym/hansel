@@ -40,6 +40,7 @@ li.gist-done {
 
 li.gist h3 {
 	color: #588F27;
+  margin-top: 0;
 }
 
 li.gist-done h3 {
@@ -48,6 +49,10 @@ li.gist-done h3 {
 
 li.gist input {
 	display: inline-block;
+}
+
+a {
+  font-size: 1.5em;
 }
 
 a:link, a:active, a:hover, a:visited {
