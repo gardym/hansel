@@ -1,5 +1,13 @@
 require File.join(File.dirname(__FILE__), '..', 'spec_helper')
 
+# Assume authenticated
+module Sinatra
+	module Helpers
+		def login_required
+		end
+	end	
+end
+
 describe "Gists Controller" do
 	include Rack::Test::Methods
 
