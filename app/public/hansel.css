@@ -91,6 +91,16 @@ label {
 	font-style: italic;
 }
 
+/* Sinatra Auth login page */
+div#sinatra_authentication {
+  text-align: center;
+}
+
+div#sinatra_authentication h1,
+div#sinatra_authentication a {
+  display: none;
+}
+
 /* Buttons */
 button {
   background-color: #7fbf4d;
