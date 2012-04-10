@@ -29,18 +29,20 @@ ul.gists {
 li.gist {
 	padding: 10px;
 	margin: 20px;
-	background-color: #CAFCD8;
+	background: #CAFCD8;
 	border-radius: 10px;
+  -webkit-transition: background 1s ease, color 1s ease;
 }
 
 li.gist-done {
 	color: #ccc;
-	background-color: #F2FCF1;
+	background: #F2FCF1;
 }
 
 li.gist h3 {
 	color: #588F27;
   margin-top: 0;
+  -webkit-transition: color 1s ease;
 }
 
 li.gist-done h3 {
@@ -56,6 +58,7 @@ a {
 }
 
 a:link, a:active, a:hover, a:visited {
+  -webkit-transition: color 1s ease;
 	color: #04BFBF;
 }
 
