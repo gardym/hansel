@@ -33,7 +33,7 @@ describe "Mails Controller" do
 					.with(hash_including(:title => @title))
 					.with(hash_including(:link => @link))
 
-				post '/mails', { :message => email.to_s }
+				post '/mails', { :message => email.to_s, :plain => @link }
 
 			end
 
@@ -54,7 +54,7 @@ describe "Mails Controller" do
 					.with(hash_including(:title => @title))
 					.with(hash_including(:text => @text))
 
-				post '/mails', { :message => email.to_s }
+				post '/mails', { :message => email.to_s, :plain => @text }
 
 			end
 
@@ -88,6 +88,43 @@ describe "Mails Controller" do
 					.with(hash_including(:done => false))
 
 				post '/mails', { :message => email.to_s }
+
+			end
+
+		end
+
+		describe 'multipart emails' do
+
+			before(:each) do
+				@email_body = "--4f82e9e4_625558ec_538d
+          Content-Type: text/plain; charset=\"utf-8\"
+          Content-Transfer-Encoding: 7bit
+          Content-Disposition: inline
+          
+          http://www.google.com
+          
+          --4f82e9e4_625558ec_538d
+          Content-Type: text/html; charset=\"utf-8\"
+          Content-Transfer-Encoding: quoted-printable
+          Content-Disposition: inline
+          
+          http://www.google.com
+          --4f82e9e4_625558ec_538d--"
+
+         @plain = "
+          http://www.google.com
+          "
+			end
+
+			it 'should create a new gist with the link from the email' do
+
+				email = Mail.new
+				email.body = @email_body
+
+				Gist.should_receive(:create)
+					.with(hash_including(:link => "http://www.google.com"))
+
+				post '/mails', { :message => email.to_s, :plain => @plain }
 
 			end
 

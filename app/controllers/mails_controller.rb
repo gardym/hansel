@@ -2,14 +2,15 @@ require 'mail'
 
 post '/mails' do
 	message = Mail.new(params[:message])
+	plain = params[:plain]
+	plain && plain.strip!
 
+	text = plain
 	begin
-		uri_parsed = URI.parse(message.body.decoded)
-
-		link = message.body.decoded
-		text = message.body.decoded
+		uri_parsed = URI.parse(plain)
+		link = plain	
 	rescue
-		text = message.body.decoded
+		# Don't do it
 	end
 
 	Gist.create(:title => message.subject, :link => link, 
