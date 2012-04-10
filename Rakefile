@@ -3,6 +3,8 @@ require 'rspec/core/rake_task'
 
 desc "Run all specs"
 task :spec => ["spec:controllers", "spec:models"]
+task :test => [:spec]
+task :default => [:spec]
 
 namespace "spec" do
 
@@ -34,5 +36,3 @@ namespace "db" do
 	end
 
 end
-
-task :default => [:spec]

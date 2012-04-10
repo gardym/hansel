@@ -6,6 +6,6 @@ Mongoid.configure do |config|
 		uri = URI.parse(ENV['MONGOHQ_URL'])
 		config.master = connection.db(uri.path.gsub(/^\//, ''))
 	else
-		config.master = Mongo::Connection.from_uri("mongodb://localhost:27017").db("test")
+		config.master = Mongo::Connection.from_uri("mongodb://localhost:27017").db("development")
 	end
 end

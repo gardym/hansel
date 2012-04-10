@@ -1,6 +1,5 @@
-require File.join(File.dirname(__FILE__), '..', 'app', 'hansel')
 require 'rack/test'
-
+require File.join(File.dirname(__FILE__), '..', 'app', 'hansel')
 require File.join(File.dirname(__FILE__), 'factories', 'gist_factory')
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
@@ -13,4 +12,8 @@ RSpec.configure do |config|
   clean_up_mongo = Proc.new { Mongoid.master.collections.select { |c| c.name !~ /system/ }.each(&:drop) }
   config.before(:each) { clean_up_mongo.call }
 	config.after(:all) { clean_up_mongo.call }
+end
+
+Mongoid.configure do |config|
+	config.master = Mongo::Connection.from_uri("mongodb://localhost:27017").db("test")
 end
