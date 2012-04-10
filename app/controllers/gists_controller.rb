@@ -1,4 +1,8 @@
 
+before '/gist*' do
+	login_required
+end
+
 get '/gists' do
 	@gists = Gist.where(:done => false)
 	apply_ordering

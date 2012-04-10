@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
+gem 'sinatra-authentication'
 gem 'mail'
 gem 'mongoid'
 gem 'bson_ext'

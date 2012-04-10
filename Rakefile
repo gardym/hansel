@@ -35,4 +35,9 @@ namespace "db" do
 		Mongoid.master.collections.select { |c| c.name !~ /system/ }.each(&:drop)
 	end
 
+	desc "Insert baseline data"
+	task :baseline do
+		require File.join(File.dirname(__FILE__), 'app', 'baseline_data')
+	end
+
 end
