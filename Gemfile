@@ -6,6 +6,7 @@ gem 'mongoid'
 gem 'bson_ext'
 gem 'haml'
 gem 'thin'
+gem 'rake'
 
 group :development, :test do
 	gem 'heroku'

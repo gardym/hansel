@@ -2,8 +2,10 @@ require 'factory_girl'
 
 FactoryGirl.define do
 
+	lines = File.readlines(File.join(File.dirname(__FILE__), "gist_titles.txt"))
+
 	factory :gist do
-		sequence(:title) { |n| "#{n}_I'm sorry that good-looking people like us made you throw up and feel bad about yourself." }
+		sequence(:title) { |n| lines[n] }
 		link				"http://www.hansel.com/"
 		text				"http://www.hansel.com"
 		done				false

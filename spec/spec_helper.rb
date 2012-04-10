@@ -11,6 +11,6 @@ RSpec.configure do |config|
 
   # Tidy up Mongodb before each test run and after the whole suite has run.
   clean_up_mongo = Proc.new { Mongoid.master.collections.select { |c| c.name !~ /system/ }.each(&:drop) }
-  #config.before(:each) { clean_up_mongo.call }
-	#config.after(:all) { clean_up_mongo.call }
+  config.before(:each) { clean_up_mongo.call }
+	config.after(:all) { clean_up_mongo.call }
 end
