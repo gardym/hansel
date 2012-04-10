@@ -7,18 +7,66 @@ describe "Gists Controller" do
 		@app ||= Sinatra::Application
 	end
 
-	describe 'get /gists' do
+	context 'with gists' do
 
-		it 'should load all of the gists that are not done' do
-
+		before(:all) do
 			5.times { FactoryGirl.create(:gist) }
 			2.times { FactoryGirl.create(:done_gist) }
 			4.times { FactoryGirl.create(:text_gist) }
+		end
 
-			Gist.should_receive(:where)
-				.with(hash_including(:done => false))
+		describe 'get /gists' do
 
-			get '/gists'
+			it 'should load all of the gists that are not done' do
+
+				Gist.should_receive(:where)
+					.with(hash_including(:done => false))
+
+				get '/gists'
+
+			end
+
+			describe 'with an order by parameter' do
+
+				it 'should order the gists by the given parameter' do
+
+					gist = double("gist")
+					Gist.stub(:where).and_return(gist)
+					gist.should_receive(:order_by)
+						.with(["created_at", "desc"])
+
+					get '/gists', {:order_by => "created_at, desc"}
+
+				end
+
+			end
+
+		end
+
+		describe 'get /gists/all' do
+
+			it 'should load all of the gists' do
+
+				Gist.should_receive(:all)
+
+				get '/gists/all'
+
+			end
+
+			describe 'with an order by parameter' do
+
+				it 'should order the gists by the given parameter' do
+
+					gist = double("gist")
+					Gist.stub(:all).and_return(gist)
+					gist.should_receive(:order_by)
+						.with(["created_at", "desc"])
+
+					get '/gists/all', {:order_by => "created_at, desc"}
+
+				end
+
+			end
 
 		end
 
