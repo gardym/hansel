@@ -8,6 +8,7 @@
 	%span.sort
 		%label Sort
 		%select
+			%option{:value => "created_at,asc", :selected => (@order_by == "created_at,asc")} Old to new
 			%option{:value => "created_at,desc", :selected => (@order_by == "created_at,desc")} Recent
 			%option{:value => "done,asc", :selected => (@order_by == "done,asc")} Done
 			%option{:value => "title,desc", :selected => (@order_by == "title,desc")} Title

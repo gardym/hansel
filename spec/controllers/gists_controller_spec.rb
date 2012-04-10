@@ -26,6 +26,21 @@ describe "Gists Controller" do
 
 			end
 
+			describe 'without an order by parameter' do
+
+				it 'should order by the default which is created_at, ascending' do
+
+					gist = double("gist")
+					Gist.stub(:where).and_return(gist)
+					gist.should_receive(:order_by)
+						.with(["created_at", "asc"])
+
+					get '/gists'
+
+				end
+
+			end
+
 			describe 'with an order by parameter' do
 
 				it 'should order the gists by the given parameter' do

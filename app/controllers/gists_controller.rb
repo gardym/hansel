@@ -17,9 +17,13 @@ put '/gist/:id' do
 end
 
 def apply_ordering
+	default_order = ["created_at", "asc"]
 	if params[:order_by]
 		o = /(?<field>.*),(?<order>.*)/.match(params[:order_by])
 		@gists = @gists.order_by([o[:field].strip, o[:order].strip])
+		@order_by = params[:order_by]
+	else
+		@gists = @gists.order_by(default_order)
+		@order_by = default_order
 	end
-	@order_by = params[:order_by]
 end
