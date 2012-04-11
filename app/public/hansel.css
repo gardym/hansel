@@ -159,3 +159,36 @@ div#sinatra_authentication input, div#sinatra_authentication input[type=submit] 
 
 
 
+
+
+@media all and (max-device-width: 480px) {
+  div.header { 
+    position: static;
+    margin-left: 20px;
+  }
+
+  div.header h1 {
+    position: absolute;
+    top: 80px;
+    left: 30px;
+  }
+
+  .header span {
+    background-color: #fff;
+    display: inline-block;
+  }
+
+  .header span.show-done {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+  }
+
+  .header span.sort {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+  }
+}
+
+
