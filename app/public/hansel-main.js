@@ -1,16 +1,24 @@
 require(["jquery"], function($) {
     $(function() {
 
+        var redirectWithQueryString = function(destination) {
+					window.location.href = destination + window.location.search;
+				};
+
+				var redirectWithOrder = function(order) {
+					window.location.href = window.location.pathname + "?order_by=" + order;
+				};
+
 				$("button.all").on("click", function() {
-					window.location.href = "/gists/all" + window.location.search;
+					redirectWithQueryString("/gists/all");
 				});
 
 				$("button.not-done").on("click", function() {
-					window.location.href = "/gists" + window.location.search;
+					redirectWithQueryString("/gists");
 				});
 
 				$("span.sort select").on("change", function() {
-					window.location.href = window.location.pathname + "?order_by=" + $(this).val();
+					redirectWithOrder($(this).val());
 				});
 
         $("input.done").on("click", function() {
@@ -18,17 +26,12 @@ require(["jquery"], function($) {
 					var done = $(this).attr("checked") !== undefined;
 
 					$.ajax("/gist/" + $(this).val(), {
-						data: { gist: { done: done } },
 						type: "PUT",
+						data: { gist: { done: done } },
 						complete: function() {
-							if(done)
-								li.addClass("gist-done");
-							else
-								li.removeClass("gist-done");
+							done ? li.addClass("gist-done") : li.removeClass("gist-done");
 						}
 					});
-					
         });
-
     });
 });
