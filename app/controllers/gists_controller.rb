@@ -4,14 +4,12 @@ before '/gist*' do
 end
 
 get '/gists' do
-	@gists = Gist.where(:done => false)
-	apply_ordering
+	@gists = apply_order(Gist.where(:done => false))
 	haml :list, :format => :html5
 end
 
 get '/gists/all' do
-	@gists = Gist.all
-	apply_ordering
+	@gists = apply_order(Gist.all)
 	haml :list, :format => :html5
 end
 
@@ -20,14 +18,14 @@ put '/gist/:id' do
 	gist.update_attributes(params[:gist])
 end
 
-def apply_ordering
-	default_order = ["created_at", "asc"]
+def apply_order(gists)
+	order = ["created_at", "asc"]
+
 	if params[:order_by]
 		o = /(?<field>.*),(?<order>.*)/.match(params[:order_by])
-		@gists = @gists.order_by([o[:field].strip, o[:order].strip])
-		@order_by = params[:order_by]
-	else
-		@gists = @gists.order_by(default_order)
-		@order_by = default_order
+		order = [o[:field].strip, o[:order].strip]
 	end
+
+	@order_by = order.join(",")
+	gists.order_by(order)
 end
