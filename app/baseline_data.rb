@@ -1,7 +1,11 @@
 require File.join(File.dirname(__FILE__), 'hansel')
 
-raise "Can't insert baseline data without GIST_PASSWORD set" if !ENV['GIST_PASSWORD']
+module Baseline
+	def self.setup(email, password)
+		raise "Can't insert baseline data without email and password set" if (email.nil? || password.nil?)
 
-user = MongoidUser.create(:email => 'conversationing@gmail.com')
-user.password = ENV['GIST_PASSWORD']
-user.save
+		user = MongoidUser.create(:email => email)
+		user.password = password
+		user.save
+	end
+end

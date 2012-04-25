@@ -1,5 +1,6 @@
 require 'rake'
 require File.join(File.dirname(__FILE__), 'app', 'hansel')
+require File.join(File.dirname(__FILE__), 'app', 'baseline_data')
 
 if !ENV['RACK_ENV'] || ["test", "development"].include?(ENV['RACK_ENV'])
 
@@ -40,14 +41,14 @@ if !ENV['RACK_ENV'] || ["test", "development"].include?(ENV['RACK_ENV'])
 		end
 
 		desc "Drop, reseed and insert baseline data"
-		task :rebuild => ["db:drop", "db:seed", "db:baseline"]
+		task :rebuild => ["db:drop", "db:seed"]
 	end
 
 end
 
 namespace "db" do
 	desc "Insert baseline data"
-	task :baseline do
-		require File.join(File.dirname(__FILE__), 'app', 'baseline_data')
+	task :baseline, [:email, :password] do |t, args|
+		Baseline::setup(args.email, args.password)
 	end
 end
