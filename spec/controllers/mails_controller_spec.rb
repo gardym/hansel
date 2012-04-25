@@ -95,24 +95,26 @@ describe "Mails Controller" do
 
 		describe 'multipart emails' do
 
+			let(:body_content) { "http://www.google.com" }
+
 			before(:each) do
 				@email_body = "--4f82e9e4_625558ec_538d
           Content-Type: text/plain; charset=\"utf-8\"
           Content-Transfer-Encoding: 7bit
           Content-Disposition: inline
           
-          http://www.google.com
+          #{body_content}
           
           --4f82e9e4_625558ec_538d
           Content-Type: text/html; charset=\"utf-8\"
           Content-Transfer-Encoding: quoted-printable
           Content-Disposition: inline
           
-          http://www.google.com
+          #{body_content}
           --4f82e9e4_625558ec_538d--"
 
          @plain = "
-          http://www.google.com
+          #{body_content}
           "
 			end
 

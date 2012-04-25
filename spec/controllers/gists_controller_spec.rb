@@ -64,6 +64,23 @@ describe "Gists Controller" do
 
 			end
 
+			describe 'with a text gist' do
+
+				it 'should linkify the text' do
+
+					gist = mock(:gist, :id => 1, :text => "This is some sample text for: http://www.google.com.au", 
+											:done => false, :title => "", :link => "")
+					gist.stub(:order_by).and_return([gist])
+					Gist.stub(:where).and_return(gist)
+
+					get '/gists'
+
+					last_response.body.should include("<a target=\"_blank\" href=\"http://www.google.com.au\">http://www.google.com.au</a>")
+
+				end
+
+			end
+
 		end
 
 		describe 'get /gists/all' do
