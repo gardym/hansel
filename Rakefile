@@ -2,7 +2,9 @@ require 'rake'
 require File.join(File.dirname(__FILE__), 'app', 'hansel')
 require File.join(File.dirname(__FILE__), 'app', 'baseline_data')
 
-if !ENV['RACK_ENV'] || ["test", "development"].include?(ENV['RACK_ENV'])
+on_test = !ENV['RACK_ENV'] || ["test", "development"].include?(ENV['RACK_ENV'])
+
+if on_test
 
 	require 'rspec/core/rake_task'
 
