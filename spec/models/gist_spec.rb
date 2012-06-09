@@ -1,19 +1,19 @@
 require 'spec_helper'
 
 describe "Gist Model" do
-	
-	describe "Creating Gists" do
 
-		it "should persist the Gist" do
+  describe "Creating Gists" do
 
-			title = "I'm not an ambi-turner"
+    it "should persist the Gist" do
 
-			Gist.create(:title => title)
-			gist = Gist.where(:title => title)
-			gist.first.title.should == title
+      title = "I'm not an ambi-turner"
 
-		end
+      Gist.create(:title => title)
+      gist = Gist.where(:title => title)
+      gist.first.title.should == title
 
-	end
+    end
+
+  end
 
 end

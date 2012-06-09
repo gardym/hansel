@@ -1,56 +1,56 @@
 html, body {
-	margin: 0;
-	padding: 0;
-	font-family: "Tahoma", sans-serif;
-	color: #444;
+  margin: 0;
+  padding: 0;
+  font-family: "Tahoma", sans-serif;
+  color: #444;
 }
 
 div.header {
-	position: fixed;
-	right: 20px;
+  position: fixed;
+  right: 20px;
 }
 
 div.header h1 {
-	text-transform: lowercase;
-	font-family: "Georgia", serif;
-	background-color: #588F27;
-	color: #fff;
-	display: inline-block;
-	position: absolute;
-	top: 80px;
-	left: 10px;
+  text-transform: lowercase;
+  font-family: "Georgia", serif;
+  background-color: #588F27;
+  color: #fff;
+  display: inline-block;
+  position: absolute;
+  top: 80px;
+  left: 10px;
 }
 
 ul.gists {
-	list-style-type: none;
-	padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 li.gist {
-	padding: 10px;
-	margin: 20px;
-	background: #CAFCD8;
-	border-radius: 10px;
+  padding: 10px;
+  margin: 20px;
+  background: #CAFCD8;
+  border-radius: 10px;
   -webkit-transition: background 1s ease, color 1s ease;
 }
 
 li.gist-done {
-	color: #ccc;
-	background: #F2FCF1;
+  color: #ccc;
+  background: #F2FCF1;
 }
 
 li.gist h3 {
-	color: #588F27;
+  color: #588F27;
   margin-top: 0;
   -webkit-transition: color 1s ease;
 }
 
 li.gist-done h3 {
-	color: #BCE0A6;
+  color: #BCE0A6;
 }
 
 li.gist input {
-	display: inline-block;
+  display: inline-block;
 }
 
 li.gist div.content {
@@ -60,36 +60,36 @@ li.gist div.content {
 
 a:link, a:active, a:hover, a:visited {
   -webkit-transition: color 1s ease;
-	color: #04BFBF;
+  color: #04BFBF;
 }
 
 .gist-done a:link,
 .gist-done a:active,
 .gist-done a:hover,
 .gist-done a:visited {
-	color: #B5EBED;
+  color: #B5EBED;
 }
 
 .header span {
-	background-color: #fff;
-	display: inline-block;
+  background-color: #fff;
+  display: inline-block;
 }
 
 .header span.show-done {
-	position: fixed;
-	top: 160px;
-	right: 20px;
+  position: fixed;
+  top: 160px;
+  right: 20px;
 }
 
 .header span.sort {
-	position: fixed;
-	top: 190px;
-	right: 20px;
+  position: fixed;
+  top: 190px;
+  right: 20px;
 }
 
 label {
-	font-size: 10px;
-	font-style: italic;
+  font-size: 10px;
+  font-style: italic;
 }
 
 /* Sinatra Auth login page */
@@ -143,15 +143,15 @@ button:hover, #sinatra_authentication input[type=submit]:hover {
   -webkit-box-shadow: inset 0 1px 0 0 #8dbf67;
   -moz-box-shadow: inset 0 1px 0 0 #8dbf67;
   box-shadow: inset 0 1px 0 0 #8dbf67;
-  cursor: pointer; 
+  cursor: pointer;
 }
-  
+
 button:active, #sinatra_authentication input[type=submit]:active {
   border: 1px solid #5b992b;
   border-bottom: 1px solid #538c27;
   -webkit-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee;
   -moz-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee;
-  box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee; 
+  box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee;
 }
 
 div#sinatra_authentication input, div#sinatra_authentication input[type=submit] {
@@ -159,7 +159,7 @@ div#sinatra_authentication input, div#sinatra_authentication input[type=submit] 
 }
 
 @media all and (max-device-width: 480px) {
-  div.header { 
+  div.header {
     position: static;
     margin-left: 20px;
   }

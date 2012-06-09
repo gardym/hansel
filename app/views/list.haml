@@ -1,24 +1,24 @@
 %div.header
-	%h1 Hansel
-	%img{:src => "/hansel.jpg"}
-	%span.show-done 
-		%label Show
-		%button.all All
-		%button.not-done Unread
-	%span.sort
-		%label Sort
-		%select
-			%option{:value => "created_at,asc", :selected => (@order_by == "created_at,asc")} Old to new
-			%option{:value => "created_at,desc", :selected => (@order_by == "created_at,desc")} Recent
-			%option{:value => "done,asc", :selected => (@order_by == "done,asc")} Read
-			%option{:value => "title,desc", :selected => (@order_by == "title,desc")} Title
+  %h1 Hansel
+  %img{:src => "/hansel.jpg"}
+  %span.show-done
+    %label Show
+    %button.all All
+    %button.not-done Unread
+  %span.sort
+    %label Sort
+    %select
+      %option{:value => "created_at,asc", :selected => (@order_by == "created_at,asc")} Old to new
+      %option{:value => "created_at,desc", :selected => (@order_by == "created_at,desc")} Recent
+      %option{:value => "done,asc", :selected => (@order_by == "done,asc")} Read
+      %option{:value => "title,desc", :selected => (@order_by == "title,desc")} Title
 
 %ul.gists
-	- @gists.each do |gist|
-		%li{:class => "gist #{gist.done && "gist-done"}" }
-			%h3= gist.title
-			%div.content= !gist.link.blank? ? linkify(gist.link)  : linkify(gist.text)
-			%div
-				%input.done{:type => "checkbox", :value => gist.id, :checked => gist.done} 
-				%label Read?
+  - @gists.each do |gist|
+    %li{:class => "gist #{gist.done && "gist-done"}" }
+      %h3= gist.title
+      %div.content= !gist.link.blank? ? linkify(gist.link)  : linkify(gist.text)
+      %div
+        %input.done{:type => "checkbox", :value => gist.id, :checked => gist.done}
+        %label Read?
 

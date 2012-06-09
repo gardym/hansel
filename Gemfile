@@ -10,10 +10,10 @@ gem 'thin'
 gem 'rake'
 
 group :development, :test do
-	gem 'heroku'
-	gem 'foreman'
-	gem 'shotgun'
-	gem 'rspec'
-	gem 'rack-test'
-	gem 'factory_girl'
+  gem 'heroku'
+  gem 'foreman'
+  gem 'shotgun'
+  gem 'rspec'
+  gem 'rack-test'
+  gem 'factory_girl'
 end

@@ -2,136 +2,136 @@ require 'spec_helper'
 require 'mail'
 
 def stub_email(subject, body)
-	email = Mail.new
-	email.subject subject
-	email.body body
+  email = Mail.new
+  email.subject subject
+  email.body body
 
-	email
+  email
 end
 
 describe "Mails Controller" do
-	include Rack::Test::Methods
+  include Rack::Test::Methods
 
-	def app
-		@app ||= Sinatra::Application
-	end
+  def app
+    @app ||= Sinatra::Application
+  end
 
-	describe 'post /mails' do
+  describe 'post /mails' do
 
-		describe 'with a title/link email' do
+    describe 'with a title/link email' do
 
-			before(:each) do
-				@title 	= "A really really ridiculously good looking link."
-				@link 	= "http://www.rrrgoodlooking.com"
-			end
+      before(:each) do
+        @title  = "A really really ridiculously good looking link."
+        @link   = "http://www.rrrgoodlooking.com"
+      end
 
-			it 'should create a new gist with the title and link set' do
+      it 'should create a new gist with the title and link set' do
 
-				email = stub_email(@title, @link)
+        email = stub_email(@title, @link)
 
-				Gist.should_receive(:create)
-					.with(hash_including(:title => @title))
-					.with(hash_including(:link => @link))
+        Gist.should_receive(:create)
+          .with(hash_including(:title => @title))
+          .with(hash_including(:link => @link))
 
-				post '/mails', { :message => email.to_s, :plain => @link }
+        post '/mails', { :message => email.to_s, :plain => @link }
 
-			end
+      end
 
-		end
+    end
 
-		describe 'with a title/text email' do
+    describe 'with a title/text email' do
 
-			before(:each) do
-				@title 	= "What say we settle this on the runway... Han Solo"
-				@text		= "Are you challenging me to a walk off? Boo-lander"
-			end
+      before(:each) do
+        @title  = "What say we settle this on the runway... Han Solo"
+        @text   = "Are you challenging me to a walk off? Boo-lander"
+      end
 
-			it 'should create a new gist with the title and text set' do
+      it 'should create a new gist with the title and text set' do
 
-				email = stub_email(@title, @text)
+        email = stub_email(@title, @text)
 
-				Gist.should_receive(:create)
-					.with(hash_including(:title => @title))
-					.with(hash_including(:text => @text))
+        Gist.should_receive(:create)
+          .with(hash_including(:title => @title))
+          .with(hash_including(:text => @text))
 
-				post '/mails', { :message => email.to_s, :plain => @text }
+        post '/mails', { :message => email.to_s, :plain => @text }
 
-			end
+      end
 
-		end
+    end
 
-		describe 'date stamping' do
+    describe 'date stamping' do
 
-			it 'should create a new gist with the date from the email' do
+      it 'should create a new gist with the date from the email' do
 
-				date = Time.now
+        date = Time.now
 
-				email = Mail.new
-				email.date = date
+        email = Mail.new
+        email.date = date
 
-				Gist.should_receive(:create)
-					.with(hash_including(:created_at => email.date))
+        Gist.should_receive(:create)
+          .with(hash_including(:created_at => email.date))
 
-				post '/mails', { :message => email.to_s }
+        post '/mails', { :message => email.to_s }
 
-			end
+      end
 
-		end
+    end
 
-		describe 'done flag' do
+    describe 'done flag' do
 
-			it 'should create a new gist that is not done' do
+      it 'should create a new gist that is not done' do
 
-				email = Mail.new
+        email = Mail.new
 
-				Gist.should_receive(:create)
-					.with(hash_including(:done => false))
+        Gist.should_receive(:create)
+          .with(hash_including(:done => false))
 
-				post '/mails', { :message => email.to_s }
+        post '/mails', { :message => email.to_s }
 
-			end
+      end
 
-		end
+    end
 
-		describe 'multipart emails' do
+    describe 'multipart emails' do
 
-			let(:body_content) { "http://www.google.com" }
+      let(:body_content) { "http://www.google.com" }
 
-			before(:each) do
-				@email_body = "--4f82e9e4_625558ec_538d
+      before(:each) do
+        @email_body = "--4f82e9e4_625558ec_538d
           Content-Type: text/plain; charset=\"utf-8\"
           Content-Transfer-Encoding: 7bit
           Content-Disposition: inline
-          
+
           #{body_content}
-          
+
           --4f82e9e4_625558ec_538d
           Content-Type: text/html; charset=\"utf-8\"
           Content-Transfer-Encoding: quoted-printable
           Content-Disposition: inline
-          
+
           #{body_content}
           --4f82e9e4_625558ec_538d--"
 
          @plain = "
           #{body_content}
           "
-			end
+      end
 
-			it 'should create a new gist with the link from the email' do
+      it 'should create a new gist with the link from the email' do
 
-				email = Mail.new
-				email.body = @email_body
+        email = Mail.new
+        email.body = @email_body
 
-				Gist.should_receive(:create)
-					.with(hash_including(:link => "http://www.google.com"))
+        Gist.should_receive(:create)
+          .with(hash_including(:link => "http://www.google.com"))
 
-				post '/mails', { :message => email.to_s, :plain => @plain }
+        post '/mails', { :message => email.to_s, :plain => @plain }
 
-			end
+      end
 
-		end
+    end
 
-	end
+  end
 
 end
