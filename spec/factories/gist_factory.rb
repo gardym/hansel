@@ -17,6 +17,11 @@ FactoryGirl.define do
 
 		factory :done_gist do
 			done 	true
+		end
+
+		factory :mixed_gist do
+      link nil
+			text "Mix this in with http://www.hansel.com"
 		end 
 
 	end

@@ -9,7 +9,7 @@ if on_test
 	require 'rspec/core/rake_task'
 
 	desc "Run all specs"
-	task :spec => ["spec:controllers", "spec:models"]
+	task :spec => ["spec:controllers", "spec:models", "spec:helpers"]
 	task :test => [:spec]
 	task :default => [:spec]
 
@@ -23,6 +23,10 @@ if on_test
 			t.pattern = "./spec/models/*_spec.rb"
 		end
 
+		RSpec::Core::RakeTask.new(:helpers) do |t|
+			t.pattern = "./spec/helpers/*_spec.rb"
+		end
+
 	end
 
 
@@ -33,6 +37,7 @@ if on_test
 		desc "Seed the database"
 		task :seed do
 			60.times { FactoryGirl.create(:gist) }
+			21.times { FactoryGirl.create(:mixed_gist) }
 			43.times { FactoryGirl.create(:text_gist) }
 			32.times { FactoryGirl.create(:done_gist) }
 		end
