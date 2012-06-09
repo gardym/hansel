@@ -1,20 +1,16 @@
 require 'mail'
 
 post '/mails' do
-  message = Mail.new(params[:message])
-  plain = params[:plain]
-  plain && plain.strip!
+  plain_text = (params[:plain] && params[:plain].strip)
 
-  text = plain
   begin
-    uri_parsed = URI.parse(plain)
-    link = plain
-  rescue
-    # Don't do it
+    link = plain_text if URI.parse(plain_text)
+  rescue URI::InvalidURIError
+    link = nil
   end
 
+  message = Mail.new(params[:message])
   Gist.create(:title => message.subject, :link => link,
-              :text => text, :created_at => message.date,
+              :text => plain_text, :created_at => message.date,
               :done => false)
-
 end
