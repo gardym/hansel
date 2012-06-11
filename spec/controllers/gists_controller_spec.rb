@@ -69,7 +69,7 @@ describe "Gists Controller" do
         it 'should linkify the text' do
 
           gist = mock(:gist, :id => 1, :text => "This is some sample text for: http://www.google.com.au",
-                      :done => false, :title => "", :link => "")
+                      :done => false, :title => "", :link => "", :tags => [])
           gist.stub(:order_by).and_return([gist])
           Gist.stub(:where).and_return(gist)
 
