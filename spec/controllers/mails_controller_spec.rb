@@ -132,6 +132,19 @@ describe "Mails Controller" do
 
     end
 
+    describe "mails that are tagged with [brackets]" do
+
+      it "should add the supplied tags into the gists tags" do
+        email = stub_email("[tag1] A new gist [tag 3] that is tagged [Tag2]", nil)
+
+        Gist.should_receive(:create)
+          .with(hash_including(:tags => ["tag1", "tag 3", "Tag2"]))
+
+        post '/mails', { :message => email.to_s }
+      end
+
+    end
+
   end
 
 end

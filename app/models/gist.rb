@@ -7,5 +7,6 @@ class Gist
   field :link, type: String
   field :text, type: String
   field :done, type: Boolean
+  field :tags, type: Array
   field :created_at, type: DateTime
 end

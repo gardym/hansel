@@ -10,7 +10,10 @@ post '/mails' do
   end
 
   message = Mail.new(params[:message])
+
+  tags = message.subject.scan(/\[([\s\w]*)\]/).flatten unless message.subject.nil?
   Gist.create(:title => message.subject, :link => link,
               :text => plain_text, :created_at => message.date,
+              :tags => tags,
               :done => false)
 end
