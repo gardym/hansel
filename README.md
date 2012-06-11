@@ -40,4 +40,5 @@ Colors: http://kuler.adobe.com/#themeID/1833017
 
 Todo
 ----
-- Labelling ([Label] [Tags] in email subject)
+- Color code tags
+- ~~Labelling ([Label] [Tags] in email subject)~~ (Done)
