@@ -81,6 +81,21 @@ describe "Gists Controller" do
 
       end
 
+      describe 'with a gist with tags' do
+        it 'should list the tags for the gist' do
+
+          gist = mock(:gist, :id => 1, :text => "This is some sample text for: http://www.google.com.au",
+                      :done => false, :title => "", :link => "", :tags => ["tag1", "tag2"])
+          gist.stub(:order_by).and_return([gist])
+          Gist.stub(:where).and_return(gist)
+
+          get '/gists'
+
+          last_response.body.should include("tag1")
+          last_response.body.should include("tag2")
+        end
+      end
+
     end
 
     describe 'get /gists/all' do

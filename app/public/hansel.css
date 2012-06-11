@@ -92,6 +92,19 @@ label {
   font-style: italic;
 }
 
+.tags {
+  font-size: 0.8em;
+}
+
+.tags span {
+  display: inline-block;
+  background-color: #6AD68C;
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+
 /* Sinatra Auth login page */
 div#sinatra_authentication {
   text-align: center;

@@ -24,6 +24,10 @@ FactoryGirl.define do
       text "Mix this in with http://www.hansel.com"
     end
 
+    factory :tagged_gist do
+      tags ["derek", "hansel"]
+    end
+
   end
 
 end

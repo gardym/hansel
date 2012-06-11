@@ -18,6 +18,9 @@
     %li{:class => "gist #{gist.done && "gist-done"}" }
       %h3= gist.title
       %div.content= !gist.link.blank? ? linkify(gist.link)  : linkify(gist.text)
+      .tags{:style => "float: right"}
+        - gist.tags && gist.tags.each do |tag|
+          %span= tag
       %div
         %input.done{:type => "checkbox", :value => gist.id, :checked => gist.done}
         %label Read?

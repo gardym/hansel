@@ -36,6 +36,7 @@ if on_local?
       21.times { FactoryGirl.create(:mixed_gist) }
       43.times { FactoryGirl.create(:text_gist) }
       32.times { FactoryGirl.create(:done_gist) }
+      12.times { FactoryGirl.create(:tagged_gist) }
     end
 
     desc "Remove all test data"
