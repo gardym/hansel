@@ -56,3 +56,17 @@ namespace "db" do
     Baseline::setup(args.email, args.password)
   end
 end
+
+namespace "provision" do
+  desc "provision the production environment"
+  task :production, :name, :email, :password do |t, args|
+    sh "heroku apps:create #{args.name}"
+    sh "heroku addons:add mongohq:free"
+    sh "heroku addons:add cloudmailin:developer"
+    sh "git push heroku master"
+    sh "heroku run rake db:baseline[#{args.email},#{args.password}]"
+
+    sh "heroku config --long"
+    puts "got to cloudmailin.com; log in and redirect your POST to /mails"
+  end
+end
