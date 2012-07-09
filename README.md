@@ -42,3 +42,5 @@ Todo
 ----
 - Color code tags
 - ~~Labelling ([Label] [Tags] in email subject)~~ (Done)
+- Search/query based on tags
+- Inline edit
