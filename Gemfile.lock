@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/maxjustus/sinatra-authentication.git
   revision: 57b60e3c57057ca57a6380d85a8b97eef8075b2f
+  ref: 57b60e3c57057ca57a6380d85a8b97eef8075b2f
   specs:
     sinatra-authentication (0.4.2)
       dm-core
