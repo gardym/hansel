@@ -22,5 +22,13 @@ describe 'lists of gists' do
         list_output.should include("data-tags='buythis music'")
       end
     end
+    describe 'when the gist has no tags' do
+      let(:test_gists) { [ FactoryGirl.create(:gist) ] }
+      describe 'the data attribute' do
+        it 'does not exist do' do
+          list_output.should_not include("data-tags")
+        end
+      end
+    end
   end
 end
