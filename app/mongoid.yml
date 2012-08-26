@@ -12,7 +12,5 @@ test:
       hosts:
         - localhost:27017
 
-#production:
-  #sessions:
-    #default:
-      #uri: mongodb
+production:
+  uri: <%= ENV['MONGOLAB_URI'] %>
