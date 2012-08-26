@@ -1,4 +1,11 @@
+post '/login' do
+  env['warden'].authenticate!
+  redirect '/gists'
+end
+
 get '/gists' do
+  throw(:warden) unless env['warden'].authenticated?
+
   @gists = apply_order(Gist.where(:done => false))
   @tags = @gists.select { |g| not g.tags.nil? }.map { |g| g.tags }.flatten.sort.uniq
   haml :list, :format => :html5
