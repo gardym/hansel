@@ -123,19 +123,14 @@ label {
   border-radius: 2px;
 }
 
-/* Sinatra Auth login page */
-div#sinatra_authentication {
+.login-form {
   text-align: center;
-  margin-top: 12px;
+  margin-top: 20px;
 }
 
-div#sinatra_authentication div {
-  margin-bottom: 12px;
-}
-
-div#sinatra_authentication h1,
-div#sinatra_authentication a {
-  display: none;
+.login-form input.passcode {
+  width: 60px;
+  font-size: 1.5em;
 }
 
 /* Buttons */
