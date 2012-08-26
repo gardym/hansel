@@ -4,6 +4,7 @@ end
 
 get '/gists' do
   @gists = apply_order(Gist.where(:done => false))
+  @tags = @gists.select { |g| not g.tags.nil? }.map { |g| g.tags }.flatten.sort.uniq
   haml :list, :format => :html5
 end
 

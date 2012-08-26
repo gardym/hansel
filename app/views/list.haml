@@ -12,6 +12,10 @@
       %option{:value => "created_at,desc", :selected => (@order_by == "created_at,desc")} Recent
       %option{:value => "done,asc", :selected => (@order_by == "done,asc")} Read
       %option{:value => "title,desc", :selected => (@order_by == "title,desc")} Title
+  %span.tags
+    %ul
+      - @tags.each do |tag|
+        %li.tag=tag
 
 %ul.gists
   - @gists.each do |gist|

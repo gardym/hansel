@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'nokogiri'
 
 # Assume authenticated
 module Sinatra
@@ -93,6 +94,36 @@ describe "Gists Controller" do
 
           last_response.body.should include("tag1")
           last_response.body.should include("tag2")
+        end
+      end
+
+      describe 'aggregated tags' do
+        describe 'the tags list' do
+          let(:tagged_gists) { [ FactoryGirl.build(:gist),
+                                 FactoryGirl.build(:gist, :tags => ['TagC', 'TagB']),
+                                 FactoryGirl.build(:gist, :tags => ['TagA', 'TagB']) ] }
+
+          let(:html_body) { Nokogiri::HTML.parse(last_response.body) }
+          let(:tags) { html_body.css('li.tag') }
+          let(:tag_names) { tags.map { |t| t.content } }
+
+          before do
+            tagged_gists.stub(:order_by).and_return(tagged_gists)
+            Gist.stub(:where).and_return(tagged_gists)
+            get '/gists'
+          end
+
+          it 'includes all of the tags' do
+            ['TagA', 'TagB', 'TagC'].each { |t| tag_names.should include(t) }
+          end
+
+          it 'is distinct' do
+            tag_names.length.should == tag_names.uniq.length
+          end
+
+          it 'is alpha-ordered' do
+            tag_names.should == tag_names.sort
+          end
         end
       end
 

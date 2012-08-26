@@ -20,4 +20,5 @@ group :development, :test do
   gem 'rspec'
   gem 'rack-test'
   gem 'factory_girl', '>=3.3'
+  gem 'nokogiri'
 end
