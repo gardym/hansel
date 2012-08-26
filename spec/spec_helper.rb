@@ -9,11 +9,11 @@ RSpec.configure do |config|
   config.filter_run :focus
 
   # Tidy up Mongodb before each test run and after the whole suite has run.
-  clean_up_mongo = Proc.new { Mongoid.master.collections.select { |c| c.name !~ /system/ }.each(&:drop) }
+  clean_up_mongo = Proc.new { Mongoid::Config.purge! }
   config.before(:each) { clean_up_mongo.call }
   config.after(:all) { clean_up_mongo.call }
 end
 
 Mongoid.configure do |config|
-  config.master = Mongo::Connection.from_uri("mongodb://localhost:27017").db("test")
+  Mongoid.load!(File.join(settings.root, 'mongoid.yml'), :test)
 end
