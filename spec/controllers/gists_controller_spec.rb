@@ -1,14 +1,6 @@
 require 'spec_helper'
 require 'nokogiri'
 
-# Assume authenticated
-module Sinatra
-  module Helpers
-    def login_required
-    end
-  end
-end
-
 describe "Gists Controller" do
   include Rack::Test::Methods
 
