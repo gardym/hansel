@@ -1,7 +1,11 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
-gem 'sinatra-authentication'
+
+# This should be >= 0.4.2, but it isn't available as a gem yet.
+# gem 'sinatra-authentication', '>=0.4.2'
+gem 'sinatra-authentication', :git => 'git://github.com/maxjustus/sinatra-authentication.git'
+
 gem 'mail'
 gem 'mongoid', '>=3'
 gem 'bson_ext'
