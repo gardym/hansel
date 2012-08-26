@@ -1,18 +1,3 @@
-GIT
-  remote: git://github.com/maxjustus/sinatra-authentication.git
-  revision: 57b60e3c57057ca57a6380d85a8b97eef8075b2f
-  ref: 57b60e3c57057ca57a6380d85a8b97eef8075b2f
-  specs:
-    sinatra-authentication (0.4.2)
-      dm-core
-      dm-migrations
-      dm-timestamps
-      dm-validations
-      rack-flash3
-      rufus-tokyo
-      sinatra
-      sinbook
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -29,14 +14,6 @@ GEM
     builder (3.0.0)
     daemons (1.1.9)
     diff-lcs (1.1.3)
-    dm-core (1.2.0)
-      addressable (~> 2.2.6)
-    dm-migrations (1.2.0)
-      dm-core (~> 1.2.0)
-    dm-timestamps (1.2.0)
-      dm-core (~> 1.2.0)
-    dm-validations (1.2.0)
-      dm-core (~> 1.2.0)
     eventmachine (0.12.10)
     excon (0.16.1)
     factory_girl (4.0.0)
@@ -72,9 +49,6 @@ GEM
     origin (1.0.7)
     polyglot (0.3.3)
     rack (1.4.1)
-    rack-flash3 (1.0.1)
-      rack
-      rack
     rack-protection (1.2.0)
       rack
     rack-test (0.6.1)
@@ -91,15 +65,12 @@ GEM
       diff-lcs (~> 1.1.3)
     rspec-mocks (2.11.2)
     rubyzip (0.9.9)
-    rufus-tokyo (1.0.7)
     shotgun (0.9)
       rack (>= 1.0)
     sinatra (1.3.3)
       rack (~> 1.3, >= 1.3.6)
       rack-protection (~> 1.2)
       tilt (~> 1.3, >= 1.3.3)
-    sinbook (0.1.9)
-      yajl-ruby
     thin (1.4.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -110,7 +81,8 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.33)
-    yajl-ruby (1.1.0)
+    warden (1.2.1)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -129,5 +101,5 @@ DEPENDENCIES
   rspec
   shotgun
   sinatra
-  sinatra-authentication!
   thin
+  warden

@@ -7,6 +7,7 @@ gem 'bson_ext'
 gem 'haml'
 gem 'thin'
 gem 'rake'
+gem 'warden'
 
 group :development, :test do
   gem 'heroku'
