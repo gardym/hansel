@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'mongoid'
-require 'digest/sha1'
 require 'warden'
 
 Mongoid.load!(File.join(settings.root, 'mongoid.yml'))

@@ -55,8 +55,8 @@ end
 
 namespace "db" do
   desc "Insert baseline data"
-  task :baseline, [:email, :password] do |t, args|
-    Baseline::setup(args.email, args.password)
+  task :baseline, [:passcode] do |t, args|
+    Baseline::setup(args.passcode)
   end
 end
 

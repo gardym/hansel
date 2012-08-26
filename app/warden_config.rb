@@ -1,3 +1,5 @@
+require 'digest/sha1'
+
 class FailApp < Sinatra::Base
   get '/unauthenticated' do
     haml :none_shall_passcode
