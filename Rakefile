@@ -41,7 +41,7 @@ if on_local?
 
     desc "Remove all test data"
     task :drop do
-      Mongoid.master.collections.select { |c| c.name !~ /system/ }.each(&:drop)
+      Mongoid::Config.purge!
     end
 
     desc "Drop, reseed and insert baseline data"
