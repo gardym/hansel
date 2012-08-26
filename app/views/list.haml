@@ -15,7 +15,7 @@
 
 %ul.gists
   - @gists.each do |gist|
-    %li{:class => "gist #{gist.done && "gist-done"}" }
+    %li{:class => "gist #{gist.done && "gist-done"}", :"data-tags" => gist.tags.sort.join(' ') }
       %h3= gist.title
       %div.content= !gist.link.blank? ? linkify(gist.link)  : linkify(gist.text)
       .tags{:style => "float: right"}
