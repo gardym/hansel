@@ -104,7 +104,7 @@ describe "Gists Controller" do
                                  FactoryGirl.build(:gist, :tags => ['TagA', 'TagB']) ] }
 
           let(:html_body) { Nokogiri::HTML.parse(last_response.body) }
-          let(:tags) { html_body.css('li.tag') }
+          let(:tags) { html_body.css('.filter-tag') }
           let(:tag_names) { tags.map { |t| t.content } }
 
           before do

@@ -87,6 +87,25 @@ a:link, a:active, a:hover, a:visited {
   right: 20px;
 }
 
+.header span.tags {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  display: block;
+  top: 200px;
+  right: 0;
+}
+
+.header span.tags label {
+  display: block;
+  float: left;
+}
+
+span.tags ul {
+  padding: 0;
+  list-style-type: none;
+}
+
 label {
   font-size: 10px;
   font-style: italic;
@@ -103,7 +122,6 @@ label {
   padding: 2px 4px;
   border-radius: 2px;
 }
-
 
 /* Sinatra Auth login page */
 div#sinatra_authentication {

@@ -13,9 +13,11 @@
       %option{:value => "done,asc", :selected => (@order_by == "done,asc")} Read
       %option{:value => "title,desc", :selected => (@order_by == "title,desc")} Title
   %span.tags
+    %label Tags
     %ul
       - @tags.each do |tag|
-        %li.tag=tag
+        %li
+          %button.filter-tag=tag
 
 %ul.gists
   - @gists.each do |gist|
