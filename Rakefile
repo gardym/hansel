@@ -25,6 +25,9 @@ if on_local?
     RSpec::Core::RakeTask.new(:helpers) do |t|
       t.pattern = "./spec/helpers/*_spec.rb"
     end
+    RSpec::Core::RakeTask.new(:helpers) do |t|
+      t.pattern = "./spec/views/*_spec.rb"
+    end
   end
 
   require File.join(File.dirname(__FILE__), 'spec', 'factories', 'gist_factory')
