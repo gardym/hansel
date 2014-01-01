@@ -1,8 +1,3 @@
-post '/login' do
-  env['warden'].authenticate!
-  redirect '/gists'
-end
-
 get '/gists' do
   throw(:warden) unless env['warden'].authenticated?
 
