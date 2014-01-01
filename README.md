@@ -13,13 +13,12 @@ Develop
 1. Clone this repository
 2. bundle install --binstubs
 3. Start mongod locally
-4. bin/rake spec (for the hell of it)
 
 Run
 ---
 0. (as above)
 1. bin/rake db:rebuild
-2. bin/rake "db:baseline\[email@local.com, password\]"
+2. bin/rake "db:baseline\[passcode\]"
 3. shotgun
 4. visit: http://localhost:9393/gists
 
@@ -30,7 +29,7 @@ Deploy
 - Add the CloudMailin add-on.
 - Forward your CloudMailin POST to /mails on your Heroku instance.
 - Take the output of heroku config -s | grep MONGOHQ_URL
-  and put it before bin/rake "db:baseline[yourlogin@email.com, password]"
+  and put it before bin/rake "db:baseline[passcode]"
 
 
 
