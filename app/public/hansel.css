@@ -184,7 +184,7 @@ div#sinatra_authentication input, div#sinatra_authentication input[type=submit] 
   font-size: 1em;
 }
 
-@media all and (max-device-width: 480px) {
+@media all and (max-width: 480px) {
   div.header {
     position: static;
     margin-left: 20px;
@@ -211,6 +211,37 @@ div#sinatra_authentication input, div#sinatra_authentication input[type=submit] 
     position: absolute;
     top: 50px;
     right: 20px;
+  }
+
+  .header span.tags {
+    background-color: inherit;
+    top: 80px;
+  }
+
+  .header span {
+    background-color: #fff;
+    display: inline-block;
+  }
+
+  button {
+    font-size: 1.2em;
+  }
+
+  span.tags ul {
+    width: 210px;
+    margin-right: 20px;
+    clear: both;
+  }
+
+  .header span.tags label {
+    float: right;
+    margin-right: 20px;
+  }
+
+  span.tags ul li {
+    float: right;
+    display: inline-block;
+    margin-left: 5px;
   }
 }
 
